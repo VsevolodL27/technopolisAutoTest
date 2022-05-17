@@ -5,13 +5,15 @@ public class User {
     private String login;
     private String password;
     private Long id;
+    private String googleLogin;
+    private String googlePassword;
 
 
-    public User(){
+    public User() {
 
     }
 
-    public User(String name, String login,String password,Long id){
+    public User(String name, String login, String password, Long id) {
         this.name = name;
         this.login = login;
         this.password = password;
@@ -42,41 +44,68 @@ public class User {
         return password;
     }
 
-    public void setLogin(String login){
-        this.login  = login;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public static class UserBuilder{
+    public String getGoogleLogin() {
+        return googleLogin;
+    }
+
+    public String getGooglePassword() {
+        return googlePassword;
+    }
+
+    public void setGoogleLogin(String googleLogin) {
+        this.googleLogin = googleLogin;
+    }
+
+    public void setGooglePassword(String googlePassword) {
+        this.googlePassword = googlePassword;
+    }
+
+    public static class UserBuilder {
         private final User user;
 
-        public UserBuilder(){
+        public UserBuilder() {
             this.user = new User();
         }
 
-        public UserBuilder setLogin(String login){
+        public UserBuilder setLogin(String login) {
             user.login = login;
             return this;
         }
-        public UserBuilder setPassword(String password){
-            user.password =password;
-            return  this;
+
+        public UserBuilder setPassword(String password) {
+            user.password = password;
+            return this;
         }
 
-        public UserBuilder setFullName(String name){
+        public UserBuilder setFullName(String name) {
             user.name = name;
             return this;
         }
 
-        public UserBuilder setId(Long id){
+        public UserBuilder setId(Long id) {
             user.id = id;
             return this;
         }
 
-        public User build(){
+        public UserBuilder setGoogleLogin(String googleLogin) {
+            user.googleLogin = googleLogin;
+            return this;
+        }
+
+        public UserBuilder setGooglePassword(String googlePassword) {
+            user.googlePassword = googlePassword;
+            return this;
+        }
+
+        public User build() {
             return user;
         }
     }

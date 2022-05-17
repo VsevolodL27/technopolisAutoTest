@@ -2,26 +2,43 @@ package pages.wrappers;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import locators.ToolBarWrapperLocators;
+import org.openqa.selenium.By;
+import pages.MessagePage;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 
 public class ToolBarWrapper {
+    private static final By xPathMessageButton = By.xpath("//*[@id=\"msg_toolbar_button\"]/div[1]");
+    private static final By xPathMiniToolbar =
+            By.xpath(".//*[@class='ucard-mini toolbar_ucard js-toolbar-menu']");
+    private static final By xPathExitButton = By.xpath("//*[@data-l=\"t,logout\"]");
+    private static final By xPathConfirmExitButton =
+            By.xpath("//*[@class='form-actions __center']//*[@data-l='t,logout']");
     private final SelenideElement toolbar;
 
-    public ToolBarWrapper(SelenideElement toolbar){
+    public ToolBarWrapper(SelenideElement toolbar) {
         this.toolbar = toolbar;
     }
 
-    public void getMessagesPage(){
-        ToolBarWrapperLocators.xPathMessageButton.click();
+    public void getMessagesPage() {
+        $(xPathMessageButton).click();
     }
 
-    public void openMiniToolbar(){
-        ToolBarWrapperLocators.xPathMiniToolbar.click();
+    public void openMiniToolbar() {
+        $(xPathMiniToolbar).click();
     }
-    public void exit(){
+
+    public void exit() {
         openMiniToolbar();
-        ToolBarWrapperLocators.exitButton.shouldBe(Condition.visible.because("Exit button not found")).click();
-        ToolBarWrapperLocators.confirmExitButton.shouldBe(Condition.visible.
-                because("Confirm button not found")).click();
+        $(xPathExitButton).shouldBe(Condition.visible.because("Exit button not found")).click();
+        $(xPathConfirmExitButton).shouldBe(Condition.visible.because("Confirm button not found")).click();
+    }
+
+    public MessagePage goToMessages() {
+        SelenideElement messageButtonElem = toolbar.$(xPathMessageButton)
+                .shouldBe(visible.because("Кнопка \"сообщения\" не отображается!"));
+        messageButtonElem.click();
+        return new MessagePage();
     }
 }
