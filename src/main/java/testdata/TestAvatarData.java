@@ -1,6 +1,6 @@
 package testdata;
 
-public class TestAlbumData {
+public class TestAvatarData {
     public static final String username = "Alexander Nevsky";
     public static final String userLogin = "rizoa@list.ru";
     public static final String userPassword = "alex1942";

@@ -46,7 +46,7 @@ public class TestNote extends BaseTest {
         refresh();
 
         Optional<FeedElementWrapper> note = mainPage.getLastFeedByUsername(user.getName());
-        assertEquals(checkString, note.get().getText(), "Text are different!");
+        assertEquals(checkString, note.get().getText(), "Texts are different!");
     }
 
     @AfterEach

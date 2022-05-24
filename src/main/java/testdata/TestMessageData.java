@@ -1,7 +1,7 @@
 package testdata;
 
 public class TestMessageData {
-    public static final String username1 = "Ivan Ivanov";
+    public static final String username1 = "Alexander Nevsky";
     public static final String userLogin1 = "ivanov@list.ru";
     public static final String userPassword1 = "12345678";
     public static final Long userId1 = 123456789L;

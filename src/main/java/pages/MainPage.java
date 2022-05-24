@@ -21,6 +21,17 @@ public class MainPage extends BasePage {
     private final By xPathToolbar = By.xpath("//*[@id=\"msg_toolbar_button\"]/div[1]");
     private final By feedElements = By.xpath("//div[contains(@class, 'feed-w')]");
     private final By notePageButton = By.xpath("//a[contains(@data-l,'t,userStatuses')]");
+    private final By xPathAvatar = By.xpath("//img[contains(@id, 'viewImageLinkId')]");
+    private final By changePhoto = By.xpath("//div[contains(text(), 'Сменить фото')]");
+    private final By privatePhoto = By.xpath
+            ("//*[@id=\"hook_Block_PopLayer\"]/div/change-user-avatar/ui-part/div/photo-picker/div/div/div[2]" +
+                    "/div/div[3]/div[2]/div[2]/div[1]/div[1]/div/a/div/div");
+    private final By choosePhoto = By.xpath
+            ("//*[@id='hook_Block_PopLayer']/div/change-user-avatar/ui-part/div/photo-picker/div/div/div[2]" +
+                    "/div/div[3]/div[2]/div/div/div/div[1]/div/img");
+    private final By agreeButton = By.xpath("//span[contains(text(), 'Установить')]");
+    private final By xPathPhoto = By.xpath("//img[contains(@class, 'image-layer_img image__4rmea')]");
+    private final By cancelButton = By.xpath("//a[contains(@id, 'cancel')]");
 
     ToolBarWrapper toolbar = new ToolBarWrapper($(xPathToolbar));
 
@@ -81,5 +92,21 @@ public class MainPage extends BasePage {
     public ProfilePage openProfile() {
         $(userFullName).click();
         return new ProfilePage();
+    }
+
+    public LoginPage changeAvatar() {
+        $(xPathAvatar).hover();
+        $(changePhoto).click();
+        $(privatePhoto).click();
+        $(choosePhoto).click();
+        $(agreeButton).click();
+        $(cancelButton).click();
+        exit();
+        return new LoginPage();
+    }
+
+    public Class<? extends SelenideElement> getPhotoClass() {
+        $(xPathAvatar).click();
+        return $(xPathPhoto).getClass();
     }
 }
