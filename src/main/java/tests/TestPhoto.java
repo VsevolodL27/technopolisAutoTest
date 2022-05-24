@@ -15,6 +15,7 @@ import java.io.File;
 import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestPhoto extends BaseTest {
     private static User user;
@@ -39,6 +40,8 @@ public class TestPhoto extends BaseTest {
         ProfilePage profilePage = mainPage.openProfile();
         PhotoPage photoPage = profilePage.openPhotoPage();
 
-        assertEquals(photoPage.addPhoto(photoPath.toString()), photoPage.checkAddingPhoto(), "Photo not found!");
+        photoPage.addPhoto(photoPath.toString());
+
+        assertTrue(photoPage.checkAddingPhoto(), "Photo not found!");
     }
 }
