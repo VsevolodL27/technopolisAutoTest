@@ -14,7 +14,7 @@ public class AlbumPage extends BasePage {
 
     @Override
     public void isLoaded() {
-        $(loadButton).shouldBe(visible.because("Profile page didn't load"));
+        $(loadButton).shouldBe(visible.because("Album page didn't load"));
     }
 
     public AlbumPage addPhoto(String path) {

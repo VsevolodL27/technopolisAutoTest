@@ -12,7 +12,7 @@ public class NotesPage extends BasePage {
 
     @Override
     public void isLoaded() {
-        $(optionList).shouldBe(visible.because("Не дождались загрузки кнопки дествий!"));
+        $(optionList).shouldBe(visible.because("Note pade didn't load"));
     }
 
     public void deleteLastNote() {
