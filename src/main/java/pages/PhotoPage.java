@@ -16,7 +16,7 @@ public class PhotoPage extends BasePage {
 
     @Override
     public void isLoaded() {
-        $(albumSearch).shouldBe(visible.because("Profile page didn't load"));
+        $(albumSearch).shouldBe(visible.because("Photo page didn't load"));
     }
 
     public AlbumPage createAlbum() {
