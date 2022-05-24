@@ -37,8 +37,8 @@ public class MainPage extends BasePage {
 
     @Override
     public void isLoaded() {
-        $(userFullName).shouldBe(visible.because("Didn't wait for element with username to load!"));
-        $(textNoteStarter).shouldBe(visible.because("Didn't wait for the button to load to create posts!"));
+        $(userFullName).shouldBe(visible.because("Element with username didn't load"));
+        $(textNoteStarter).shouldBe(visible.because("Text note starter button didn't load"));
     }
 
     public MessagePage openMessage() {
@@ -77,13 +77,15 @@ public class MainPage extends BasePage {
     }
 
     public NotesPage openNotePage() {
-        SelenideElement notePageButtonElem = $(notePageButton).shouldBe(visible.because("Кнопка перехода на траницу заметок не отображается!"));
+        SelenideElement notePageButtonElem = $(notePageButton)
+                .shouldBe(visible.because("Note open button didn't load"));
         notePageButtonElem.click();
         return new NotesPage();
     }
 
     public MainPage makeNote(NewNote note) {
-        SelenideElement textNoteStarterElem = $(textNoteStarter).shouldBe(visible.because("Кнопка начала создания заметки не отображается!"));
+        SelenideElement textNoteStarterElem = $(textNoteStarter)
+                .shouldBe(visible.because("Make note button didn't load"));
         textNoteStarterElem.click();
         note.send();
         return this;
