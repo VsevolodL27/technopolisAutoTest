@@ -37,7 +37,7 @@ public class ToolBarWrapper {
 
     public MessagePage goToMessages() {
         SelenideElement messageButtonElem = toolbar.$(xPathMessageButton)
-                .shouldBe(visible.because("Кнопка \"сообщения\" не отображается!"));
+                .shouldBe(visible.because("Message button didn't load"));
         messageButtonElem.click();
         return new MessagePage();
     }

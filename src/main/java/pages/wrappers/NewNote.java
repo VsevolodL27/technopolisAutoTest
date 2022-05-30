@@ -36,30 +36,38 @@ public class NewNote {
     }
 
     private void makeHeader() {
-        SelenideElement moreOptionsButtonElem = $(moreOptionsButton).shouldBe(visible.because("Не отображается кнопка дополнительных действий!"));
+        SelenideElement moreOptionsButtonElem = $(moreOptionsButton)
+                .shouldBe(visible.because("More options button didn't load"));
         moreOptionsButtonElem.click();
-        SelenideElement headerAddButtonElem = $(headerAddButton).shouldBe(visible.because("Не отображается кнопка добавления заголовка!"));
+        SelenideElement headerAddButtonElem = $(headerAddButton)
+                .shouldBe(visible.because("Header add button didn't load"));
         headerAddButtonElem.click();
-        SelenideElement headerFieldElem = $(headerField).shouldBe(visible.because("Не отображается поле для ввода заголовка!"));
+        SelenideElement headerFieldElem = $(headerField)
+                .shouldBe(visible.because("Header field didn't load"));
         headerFieldElem.setValue(header);
     }
 
     private void makeText() {
-        SelenideElement textFieldElem = $(textField).shouldBe(visible.because("Не отображается поле для ввода текста!"));
+        SelenideElement textFieldElem = $(textField)
+                .shouldBe(visible.because("Text field didn't load\""));
         textFieldElem.setValue(text);
     }
 
     private void makeQuiz() {
-        SelenideElement addQuizButtonElem = $(addQuizButton).shouldBe(visible.because("Не отображается кнопка добавления опроса!"));
+        SelenideElement addQuizButtonElem = $(addQuizButton)
+                .shouldBe(visible.because("Add quiz button didn't load"));
         addQuizButtonElem.click();
-        SelenideElement questionFieldElem = $(questionField).shouldBe(visible.because("Не отображается поле для ввода вопроса!"));
+        SelenideElement questionFieldElem = $(questionField)
+                .shouldBe(visible.because("Question field didn't load"));
         questionFieldElem.setValue(quizQuestion);
-        SelenideElement answerFieldFirstElem = $(answerFieldFirst).shouldBe(visible.because("Не отображается поле для ввода ответа!"));
+        SelenideElement answerFieldFirstElem = $(answerFieldFirst)
+                .shouldBe(visible.because("Answer field didn't load"));
         answerFieldFirstElem.setValue(answers.get(0));
 
         SelenideElement answerFieldLastElem;
         for (int i = 1; i < answers.size(); i++) {
-            answerFieldLastElem = $(answerFieldLast).shouldBe(visible.because("Не отображается поле для ввода ответа!"));
+            answerFieldLastElem = $(answerFieldLast)
+                    .shouldBe(visible.because("Answer field didn't load"));
             answerFieldLastElem.setValue(answers.get(i));
         }
     }
@@ -77,8 +85,9 @@ public class NewNote {
             makeQuiz();
         }
 
-        SelenideElement submitButtonElem = $(submitButton).shouldBe(visible.because("Кнопка для отправки поста не отображается!"));
+        SelenideElement submitButtonElem = $(submitButton)
+                .shouldBe(visible.because("Submit button didn't load"));
         submitButtonElem.click();
-        $(textField).shouldNot(visible.because("Не дождались автоматического закрытия окна!"));
+        $(textField).shouldNot(visible.because("Text field didn't close"));
     }
 }
