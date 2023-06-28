@@ -8,3 +8,4 @@
 ### 6. Установка различных реакций на заметку(TestEmoji.java)
 ### 7. Тест на добавление фотографии пользователем(TestPhoto.java)
 ### 8. Тест на создание альбома(TestAlbum.java)
+![Image alt](https://github.com/VsevolodL27/technopolisAutoTest/blob/master/2023-06-28_12-34-51.png)
